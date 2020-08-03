@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RobotExecutorTest {
 
-    private RobotExecutor subject = new RobotExecutor(new MarsPlanet(5, 3));
+    private RobotExecutor subject = new RobotExecutor(new MarsPlanet(5, 3), new RobotActions());
 
     @Test
     void executeInstructions() {
