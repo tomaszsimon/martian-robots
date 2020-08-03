@@ -42,13 +42,18 @@ class RobotExecutorIT {
     void executeInstructions3() {
 
         //given
-        MarsRobot marsRobot = aMarsRobot(0, 3, "W");
-        String instructions = "LLFFFLFLFL";
+        //execute robot leaving a scent
+        MarsRobot marsRobot1 = aMarsRobot(3, 2, "N");
+        String instructions1 = "FRRFLLFFRRFLL";
+        subject.executeInstructions(marsRobot1, instructions1);
+
+        MarsRobot marsRobot2 = aMarsRobot(0, 3, "W");
+        String instructions2 = "LLFFFLFLFL";
 
         //when
-        subject.executeInstructions(marsRobot, instructions);
+        subject.executeInstructions(marsRobot2, instructions2);
 
         //then
-        assertThat(marsRobot).isEqualToComparingFieldByField(aMarsRobot(2, 3, "S"));
+        assertThat(marsRobot2).isEqualToComparingFieldByField(aMarsRobot(2, 3, "S"));
     }
 }

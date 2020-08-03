@@ -74,4 +74,73 @@ class RobotExecutorTest {
         assertThat(marsRobot.getStatus()).isEqualTo("LOST");
         assertThat(marsRobot.getY()).isEqualTo(0);
     }
+
+    @Test
+    void shouldReturnTrue_whenScentIsAdded_andRobotTriesToMoveWestOutOfGrid() {
+
+        //given
+        marsPlanet.addScent(0, marsPlanet.getY());
+        MarsRobot marsRobot = aMarsRobot(0, marsPlanet.getY(), "W");
+
+        //when
+        boolean result = subject.doScentCheck(marsRobot);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void shouldReturnTrue_whenScentIsAdded_andRobotTriesToMoveSouthOutOfGrid() {
+
+        //given
+        marsPlanet.addScent(marsPlanet.getX(), 0);
+        MarsRobot marsRobot = aMarsRobot(marsPlanet.getX(), 0, "S");
+
+        //when
+        boolean result = subject.doScentCheck(marsRobot);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void shouldReturnTrue_whenScentIsAdded_andRobotTriesToMoveNorthOutOfGrid() {
+
+        //given
+        marsPlanet.addScent(marsPlanet.getX(), marsPlanet.getY());
+        MarsRobot marsRobot = aMarsRobot(marsPlanet.getX(), marsPlanet.getY(), "N");
+
+        //when
+        boolean result = subject.doScentCheck(marsRobot);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void shouldReturnTrue_whenScentIsAdded_andRobotTriesToMoveEasttOutOfGrid() {
+
+        //given
+        marsPlanet.addScent(marsPlanet.getX(), marsPlanet.getY());
+        MarsRobot marsRobot = aMarsRobot(marsPlanet.getX(), marsPlanet.getY(), "E");
+
+        //when
+        boolean result = subject.doScentCheck(marsRobot);
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void shouldReturnFalse_whenScentWasNotAddedForEdgeCoordinates() {
+
+        //given
+        MarsRobot marsRobot = aMarsRobot(marsPlanet.getX(), marsPlanet.getY(), "E");
+
+        //when
+        boolean result = subject.doScentCheck(marsRobot);
+
+        //then
+        assertThat(result).isFalse();
+    }
 }

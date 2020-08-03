@@ -13,6 +13,13 @@ public class RobotExecutor {
 
         for (char instruction : instructions.toCharArray()) {
             RobotAction robotAction = robotActions.getAction(instruction);
+
+            if (robotAction instanceof MoveAction) {
+                if (doScentCheck(marsRobot)) {
+                    continue;
+                }
+            }
+
             robotAction.execute(marsRobot);
 
             if (robotAction instanceof MoveAction) {
@@ -22,6 +29,30 @@ public class RobotExecutor {
             }
         }
 
+    }
+
+    boolean doScentCheck(MarsRobot marsRobot) {
+        if (marsRobot.getX() == 0 && "W".equals(marsRobot.getOrientation())) {
+            if (marsPlanet.hasScent(marsRobot.getX(), marsRobot.getY())) {
+                return true;
+            }
+        }
+        if (marsRobot.getY() == 0 && "S".equals(marsRobot.getOrientation())) {
+            if (marsPlanet.hasScent(marsRobot.getX(), marsRobot.getY())) {
+                return true;
+            }
+        }
+        if (marsRobot.getY() == marsPlanet.getY() && "N".equals(marsRobot.getOrientation())) {
+            if (marsPlanet.hasScent(marsRobot.getX(), marsRobot.getY())) {
+                return true;
+            }
+        }
+        if (marsRobot.getX() == marsPlanet.getX() && "E".equals(marsRobot.getOrientation())) {
+            if (marsPlanet.hasScent(marsRobot.getX(), marsRobot.getY())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     boolean handleOffGridRobot(MarsRobot marsRobot) {
