@@ -2,6 +2,7 @@ package com.exercise;
 
 import com.exercise.actions.MoveForwardAction;
 import com.exercise.actions.RobotAction;
+import com.exercise.actions.RotateLeftAction;
 import com.exercise.actions.RotateRightAction;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +30,15 @@ class RobotActionsTest {
 
         //then
         assertThat(result).isInstanceOf(MoveForwardAction.class);
+    }
+
+    @Test
+    void shouldReturnRotateLeftAction_whenInstructionIsL() {
+
+        //when
+        RobotAction result = subject.getAction('L');
+
+        //then
+        assertThat(result).isInstanceOf(RotateLeftAction.class);
     }
 }

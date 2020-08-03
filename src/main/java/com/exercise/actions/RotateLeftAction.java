@@ -2,19 +2,19 @@ package com.exercise.actions;
 
 import com.exercise.MarsRobot;
 
-public class RotateRightAction implements RobotAction {
+public class RotateLeftAction implements RobotAction {
     @Override
     public void execute(MarsRobot marsRobot) {
         String orientation = marsRobot.getOrientation();
 
-        if ("E".equals(orientation)) {
-            marsRobot.setOrientation("S");
-        } else if ("S".equals(orientation)) {
+        if ("N".equals(orientation)) {
             marsRobot.setOrientation("W");
-        } else if ("W".equals(orientation)) {
-            marsRobot.setOrientation("N");
-        } else if ("N".equals(orientation)) {
+        } else if ("S".equals(orientation)) {
             marsRobot.setOrientation("E");
+        } else if ("W".equals(orientation)) {
+            marsRobot.setOrientation("S");
+        } else if ("E".equals(orientation)) {
+            marsRobot.setOrientation("N");
         }
     }
 }
