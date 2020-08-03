@@ -11,4 +11,5 @@ public class MarsRobot {
     private int x;
     private int y;
     private String orientation;
+    private String status;
 }

@@ -2,7 +2,7 @@ package com.exercise.actions;
 
 import com.exercise.MarsRobot;
 
-public class MoveForwardAction implements RobotAction {
+public class MoveForwardAction implements MoveAction {
     @Override
     public void execute(MarsRobot marsRobot) {
         String orientation = marsRobot.getOrientation();
